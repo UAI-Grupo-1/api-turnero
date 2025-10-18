@@ -1,4 +1,4 @@
-﻿namespace api_turnero
+namespace api_turnero
 {
     partial class Form1
     {
