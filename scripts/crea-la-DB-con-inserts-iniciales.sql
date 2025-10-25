@@ -12,64 +12,77 @@
 CREATE DATABASE api_db_turnero;
 
 
+-- Tabla de pacientes
 CREATE TABLE Paciente (
     id_paciente INT PRIMARY KEY IDENTITY(1,1),
-    nombre TEXT,
-    email TEXT,
-    telefono INT,
-    fecha_nacimiento DATETIME,
+    nombre VARCHAR(100),
+    email VARCHAR(100),
+    telefono VARCHAR(20),
+    fecha_nacimiento DATE
 );
 
-
-CREATE TABLE Solicitud (
-    id_solicitud INT PRIMARY KEY IDENTITY(1,1),
-    descripcion TEXT,
-    fecha_solicitud DATETIME,
-    id_paciente INT FOREIGN KEY REFERENCES Paciente(id_paciente)
-);
-
-
+-- Tabla de especialidades
 CREATE TABLE Especialidad (
     id_especialidad INT PRIMARY KEY IDENTITY(1,1),
-    descripcion TEXT,
+    descripcion VARCHAR(100)
 );
 
--- Inserts:
-insert into Especialidad(descripcion) VALUES ('Odontología');
-insert into Especialidad(descripcion) VALUES ('Pediatría');
-insert into Especialidad(descripcion) VALUES ('Cirujano');
-insert into Especialidad(descripcion) VALUES ('Enfermería');
+-- Inserts de especialidades
+INSERT INTO Especialidad(descripcion) VALUES 
+('Odontología'),
+('Pediatría'),
+('Cirujano'),
+('Enfermería');
 
-
+-- Tabla de médicos
 CREATE TABLE Medico (
     id_medico INT PRIMARY KEY IDENTITY(1,1),
-    nombre TEXT,
-    email TEXT,
-    id_especialidad INT FOREIGN KEY REFERENCES Especialidad(id_especialidad),
+    nombre VARCHAR(100),
+    email VARCHAR(100),
+    id_especialidad INT FOREIGN KEY REFERENCES Especialidad(id_especialidad)
 );
 
--- Inserts:
-insert into Medico(nombre, email, id_especialidad) VALUES ('Jose Migrañas', 'jose@gmail.com', 1);
-insert into Medico(nombre, email, id_especialidad) VALUES ('Angela Leiva', 'angela@gmail.com', 2);
-insert into Medico(nombre, email, id_especialidad) VALUES ('Juan Genitales', 'juan@gmail.com', 3);
-insert into Medico(nombre, email, id_especialidad) VALUES ('Carla Guardia', 'carla@gmail.com', 4);
+-- Inserts de médicos
+INSERT INTO Medico(nombre, email, id_especialidad) VALUES
+('Jose Migrañas', 'jose@gmail.com', 1),
+('Angela Leiva', 'angela@gmail.com', 2),
+('Juan Genitales', 'juan@gmail.com', 3),
+('Carla Guardia', 'carla@gmail.com', 4);
 
-
+-- Tabla de consultorios
 CREATE TABLE Consultorio (
     id_consultorio INT PRIMARY KEY IDENTITY(1,1),
-    direccion TEXT,
+    direccion VARCHAR(150)
 );
 
--- Inserts:
-insert into Consultorio(direccion) VALUES ('Calle falsa 123');
-insert into Consultorio(direccion) VALUES ('Av. siempre viva 0');
-insert into Consultorio(direccion) VALUES ('Buenos Aires 012');
+-- Inserts de consultorios
+INSERT INTO Consultorio(direccion) VALUES
+('Calle falsa 123'),
+('Av. siempre viva 0'),
+('Buenos Aires 012');
+
+-- Tabla de Usuarios 
+CREATE TABLE Usuario (
+    id_usuario INT PRIMARY KEY IDENTITY(1,1),
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100)
+);
+
+-- Inserts de usuarios
+INSERT INTO Usuario (username, password, email) VALUES
+('admin', 'admin123', 'admin@turnero.com'),
+('usuario1', 'clave123', 'usuario1@gmail.com');
 
 
+
+-- Tabla de turnos
 CREATE TABLE Turno (
     id_turno INT PRIMARY KEY IDENTITY(1,1),
     fecha_turno DATETIME,
-    estado TEXT,
-    id_solicitud INT FOREIGN KEY REFERENCES Solicitud(id_solicitud),
-    id_consultorio INT FOREIGN KEY REFERENCES Consultorio(id_consultorio)
+    estado VARCHAR(50),
+    id_paciente INT FOREIGN KEY REFERENCES Paciente(id_paciente),
+    id_medico INT FOREIGN KEY REFERENCES Medico(id_medico),
+    id_consultorio INT FOREIGN KEY REFERENCES Consultorio(id_consultorio),
+    id_usuario INT FOREIGN KEY REFERENCES Usuario(id_usuario)
 );
