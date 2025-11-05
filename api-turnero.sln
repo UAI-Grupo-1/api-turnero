@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35828.75 d17.13
+VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "api-turnero\UI.csproj", "{DD16066D-A6BD-439A-AC1B-97CFADCC1B4A}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{C68C4EC8-9BAF-4D69-B972-27823FF1ED67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{45F17548-6FE7-4EE7-AAB7-576A8261FF5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "Mapper\Mapper.csproj", "{61BBE4A2-3A13-4C78-8873-91C06A51B990}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{45F17548-6FE7-4EE7-AAB7-576A8261FF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45F17548-6FE7-4EE7-AAB7-576A8261FF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45F17548-6FE7-4EE7-AAB7-576A8261FF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BBE4A2-3A13-4C78-8873-91C06A51B990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BBE4A2-3A13-4C78-8873-91C06A51B990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BBE4A2-3A13-4C78-8873-91C06A51B990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BBE4A2-3A13-4C78-8873-91C06A51B990}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
