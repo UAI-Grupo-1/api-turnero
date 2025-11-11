@@ -85,10 +85,9 @@ namespace api_turnero
             tabControl1.Controls.Add(tabPacientes);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(914, 748);
+            tabControl1.Size = new Size(800, 636);
             tabControl1.TabIndex = 0;
             // 
             // tabAgenda
@@ -99,11 +98,10 @@ namespace api_turnero
             tabAgenda.Controls.Add(label2);
             tabAgenda.Controls.Add(dtpAgenda);
             tabAgenda.Controls.Add(label1);
-            tabAgenda.Location = new Point(4, 29);
-            tabAgenda.Margin = new Padding(3, 4, 3, 4);
+            tabAgenda.Location = new Point(4, 26);
             tabAgenda.Name = "tabAgenda";
-            tabAgenda.Padding = new Padding(3, 4, 3, 4);
-            tabAgenda.Size = new Size(906, 715);
+            tabAgenda.Padding = new Padding(3, 3, 3, 3);
+            tabAgenda.Size = new Size(792, 606);
             tabAgenda.TabIndex = 0;
             tabAgenda.Text = "Agenda de Turnos";
             tabAgenda.UseVisualStyleBackColor = true;
@@ -111,20 +109,18 @@ namespace api_turnero
             // 
             // btnConfirmarTurnoAgenda
             // 
-            btnConfirmarTurnoAgenda.Location = new Point(715, 656);
-            btnConfirmarTurnoAgenda.Margin = new Padding(3, 4, 3, 4);
+            btnConfirmarTurnoAgenda.Location = new Point(626, 558);
             btnConfirmarTurnoAgenda.Name = "btnConfirmarTurnoAgenda";
-            btnConfirmarTurnoAgenda.Size = new Size(181, 31);
+            btnConfirmarTurnoAgenda.Size = new Size(158, 26);
             btnConfirmarTurnoAgenda.TabIndex = 5;
             btnConfirmarTurnoAgenda.Text = "Confirmar Turno";
             btnConfirmarTurnoAgenda.UseVisualStyleBackColor = true;
             // 
             // btnCancelarTurno
             // 
-            btnCancelarTurno.Location = new Point(528, 656);
-            btnCancelarTurno.Margin = new Padding(3, 4, 3, 4);
+            btnCancelarTurno.Location = new Point(462, 558);
             btnCancelarTurno.Name = "btnCancelarTurno";
-            btnCancelarTurno.Size = new Size(181, 31);
+            btnCancelarTurno.Size = new Size(158, 26);
             btnCancelarTurno.TabIndex = 4;
             btnCancelarTurno.Text = "Cancelar Turno";
             btnCancelarTurno.UseVisualStyleBackColor = true;
@@ -132,37 +128,35 @@ namespace api_turnero
             // dgvAgenda
             // 
             dgvAgenda.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAgenda.Location = new Point(9, 95);
-            dgvAgenda.Margin = new Padding(3, 4, 3, 4);
+            dgvAgenda.Location = new Point(8, 81);
             dgvAgenda.Name = "dgvAgenda";
             dgvAgenda.RowHeadersWidth = 51;
-            dgvAgenda.Size = new Size(887, 553);
+            dgvAgenda.Size = new Size(776, 470);
             dgvAgenda.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(9, 71);
+            label2.Location = new Point(8, 60);
             label2.Name = "label2";
-            label2.Size = new Size(108, 20);
+            label2.Size = new Size(96, 17);
             label2.TabIndex = 2;
             label2.Text = "Turnos del Día:";
             // 
             // dtpAgenda
             // 
-            dtpAgenda.Location = new Point(138, 20);
-            dtpAgenda.Margin = new Padding(3, 4, 3, 4);
+            dtpAgenda.Location = new Point(121, 17);
             dtpAgenda.Name = "dtpAgenda";
-            dtpAgenda.Size = new Size(255, 27);
+            dtpAgenda.Size = new Size(224, 25);
             dtpAgenda.TabIndex = 1;
             dtpAgenda.ValueChanged += dtpAgenda_ValueChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(9, 28);
+            label1.Location = new Point(8, 24);
             label1.Name = "label1";
-            label1.Size = new Size(130, 20);
+            label1.Size = new Size(114, 17);
             label1.TabIndex = 0;
             label1.Text = "Seleccionar Fecha:";
             // 
@@ -172,11 +166,10 @@ namespace api_turnero
             tabNuevoTurno.Controls.Add(groupBox3);
             tabNuevoTurno.Controls.Add(groupBox2);
             tabNuevoTurno.Controls.Add(groupBox1);
-            tabNuevoTurno.Location = new Point(4, 29);
-            tabNuevoTurno.Margin = new Padding(3, 4, 3, 4);
+            tabNuevoTurno.Location = new Point(4, 26);
             tabNuevoTurno.Name = "tabNuevoTurno";
-            tabNuevoTurno.Padding = new Padding(3, 4, 3, 4);
-            tabNuevoTurno.Size = new Size(906, 715);
+            tabNuevoTurno.Padding = new Padding(3, 3, 3, 3);
+            tabNuevoTurno.Size = new Size(792, 606);
             tabNuevoTurno.TabIndex = 1;
             tabNuevoTurno.Text = "Nuevo Turno";
             tabNuevoTurno.UseVisualStyleBackColor = true;
@@ -184,10 +177,9 @@ namespace api_turnero
             // btnConfirmarTurno
             // 
             btnConfirmarTurno.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnConfirmarTurno.Location = new Point(661, 628);
-            btnConfirmarTurno.Margin = new Padding(3, 4, 3, 4);
+            btnConfirmarTurno.Location = new Point(578, 534);
             btnConfirmarTurno.Name = "btnConfirmarTurno";
-            btnConfirmarTurno.Size = new Size(235, 72);
+            btnConfirmarTurno.Size = new Size(206, 61);
             btnConfirmarTurno.TabIndex = 3;
             btnConfirmarTurno.Text = "Confirmar Turno";
             btnConfirmarTurno.UseVisualStyleBackColor = true;
@@ -195,22 +187,19 @@ namespace api_turnero
             // groupBox3
             // 
             groupBox3.Controls.Add(txtMotivo);
-            groupBox3.Location = new Point(9, 508);
-            groupBox3.Margin = new Padding(3, 4, 3, 4);
+            groupBox3.Location = new Point(8, 432);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(887, 112);
+            groupBox3.Size = new Size(776, 95);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Motivo de la Consulta";
             // 
             // txtMotivo
             // 
-            txtMotivo.Location = new Point(7, 29);
-            txtMotivo.Margin = new Padding(3, 4, 3, 4);
+            txtMotivo.Location = new Point(6, 25);
             txtMotivo.Multiline = true;
             txtMotivo.Name = "txtMotivo";
-            txtMotivo.Size = new Size(873, 73);
+            txtMotivo.Size = new Size(764, 63);
             txtMotivo.TabIndex = 0;
             // 
             // groupBox2
@@ -222,11 +211,9 @@ namespace api_turnero
             groupBox2.Controls.Add(cmbMedicos);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(cmbEspecialidades);
-            groupBox2.Location = new Point(9, 171);
-            groupBox2.Margin = new Padding(3, 4, 3, 4);
+            groupBox2.Location = new Point(8, 145);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(887, 329);
+            groupBox2.Size = new Size(776, 280);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Detalles del Turno";
@@ -234,63 +221,60 @@ namespace api_turnero
             // listHorarios
             // 
             listHorarios.FormattingEnabled = true;
-            listHorarios.Location = new Point(18, 189);
-            listHorarios.Margin = new Padding(3, 4, 3, 4);
+            listHorarios.ItemHeight = 17;
+            listHorarios.Location = new Point(16, 161);
             listHorarios.Name = "listHorarios";
-            listHorarios.Size = new Size(850, 124);
+            listHorarios.Size = new Size(744, 106);
             listHorarios.TabIndex = 6;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(449, 41);
+            label6.Location = new Point(393, 35);
             label6.Name = "label6";
-            label6.Size = new Size(114, 20);
+            label6.Size = new Size(101, 17);
             label6.TabIndex = 5;
             label6.Text = "Fecha del Turno";
             // 
             // dtpFechaTurno
             // 
-            dtpFechaTurno.Location = new Point(449, 65);
-            dtpFechaTurno.Margin = new Padding(3, 4, 3, 4);
+            dtpFechaTurno.Location = new Point(393, 55);
             dtpFechaTurno.Name = "dtpFechaTurno";
-            dtpFechaTurno.Size = new Size(278, 27);
+            dtpFechaTurno.Size = new Size(244, 25);
             dtpFechaTurno.TabIndex = 4;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(18, 104);
+            label5.Location = new Point(16, 88);
             label5.Name = "label5";
-            label5.Size = new Size(59, 20);
+            label5.Size = new Size(52, 17);
             label5.TabIndex = 3;
             label5.Text = "Médico";
             // 
             // cmbMedicos
             // 
             cmbMedicos.FormattingEnabled = true;
-            cmbMedicos.Location = new Point(18, 128);
-            cmbMedicos.Margin = new Padding(3, 4, 3, 4);
+            cmbMedicos.Location = new Point(16, 109);
             cmbMedicos.Name = "cmbMedicos";
-            cmbMedicos.Size = new Size(374, 28);
+            cmbMedicos.Size = new Size(328, 25);
             cmbMedicos.TabIndex = 2;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(18, 41);
+            label4.Location = new Point(16, 35);
             label4.Name = "label4";
-            label4.Size = new Size(93, 20);
+            label4.Size = new Size(81, 17);
             label4.TabIndex = 1;
             label4.Text = "Especialidad";
             // 
             // cmbEspecialidades
             // 
             cmbEspecialidades.FormattingEnabled = true;
-            cmbEspecialidades.Location = new Point(18, 65);
-            cmbEspecialidades.Margin = new Padding(3, 4, 3, 4);
+            cmbEspecialidades.Location = new Point(16, 55);
             cmbEspecialidades.Name = "cmbEspecialidades";
-            cmbEspecialidades.Size = new Size(374, 28);
+            cmbEspecialidades.Size = new Size(328, 25);
             cmbEspecialidades.TabIndex = 0;
             // 
             // groupBox1
@@ -300,11 +284,9 @@ namespace api_turnero
             groupBox1.Controls.Add(btnBuscarPaciente);
             groupBox1.Controls.Add(txtBuscarPaciente);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(9, 8);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
+            groupBox1.Location = new Point(8, 7);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(887, 155);
+            groupBox1.Size = new Size(776, 132);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del Paciente";
@@ -313,46 +295,43 @@ namespace api_turnero
             // 
             lblPacienteSeleccionado.AutoSize = true;
             lblPacienteSeleccionado.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblPacienteSeleccionado.Location = new Point(18, 117);
+            lblPacienteSeleccionado.Location = new Point(16, 99);
             lblPacienteSeleccionado.Name = "lblPacienteSeleccionado";
-            lblPacienteSeleccionado.Size = new Size(231, 20);
+            lblPacienteSeleccionado.Size = new Size(184, 15);
             lblPacienteSeleccionado.TabIndex = 4;
             lblPacienteSeleccionado.Text = "Paciente Seleccionado: Ninguno";
             // 
             // btnNuevoPaciente
             // 
-            btnNuevoPaciente.Location = new Point(739, 59);
-            btnNuevoPaciente.Margin = new Padding(3, 4, 3, 4);
+            btnNuevoPaciente.Location = new Point(647, 50);
             btnNuevoPaciente.Name = "btnNuevoPaciente";
-            btnNuevoPaciente.Size = new Size(141, 31);
+            btnNuevoPaciente.Size = new Size(123, 26);
             btnNuevoPaciente.TabIndex = 3;
             btnNuevoPaciente.Text = "Nuevo Paciente";
             btnNuevoPaciente.UseVisualStyleBackColor = true;
             // 
             // btnBuscarPaciente
             // 
-            btnBuscarPaciente.Location = new Point(590, 59);
-            btnBuscarPaciente.Margin = new Padding(3, 4, 3, 4);
+            btnBuscarPaciente.Location = new Point(516, 50);
             btnBuscarPaciente.Name = "btnBuscarPaciente";
-            btnBuscarPaciente.Size = new Size(143, 31);
+            btnBuscarPaciente.Size = new Size(125, 26);
             btnBuscarPaciente.TabIndex = 2;
             btnBuscarPaciente.Text = "Buscar";
             btnBuscarPaciente.UseVisualStyleBackColor = true;
             // 
             // txtBuscarPaciente
             // 
-            txtBuscarPaciente.Location = new Point(18, 60);
-            txtBuscarPaciente.Margin = new Padding(3, 4, 3, 4);
+            txtBuscarPaciente.Location = new Point(16, 51);
             txtBuscarPaciente.Name = "txtBuscarPaciente";
-            txtBuscarPaciente.Size = new Size(564, 27);
+            txtBuscarPaciente.Size = new Size(494, 25);
             txtBuscarPaciente.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 36);
+            label3.Location = new Point(16, 31);
             label3.Name = "label3";
-            label3.Size = new Size(240, 20);
+            label3.Size = new Size(214, 17);
             label3.TabIndex = 0;
             label3.Text = "Buscar Paciente por Nombre o DNI";
             // 
@@ -370,10 +349,9 @@ namespace api_turnero
             tabPacientes.Controls.Add(label8);
             tabPacientes.Controls.Add(txtNombrePaciente);
             tabPacientes.Controls.Add(label7);
-            tabPacientes.Location = new Point(4, 29);
-            tabPacientes.Margin = new Padding(3, 4, 3, 4);
+            tabPacientes.Location = new Point(4, 26);
             tabPacientes.Name = "tabPacientes";
-            tabPacientes.Size = new Size(906, 715);
+            tabPacientes.Size = new Size(792, 606);
             tabPacientes.TabIndex = 2;
             tabPacientes.Text = "Gestión de Pacientes";
             tabPacientes.UseVisualStyleBackColor = true;
@@ -381,119 +359,110 @@ namespace api_turnero
             // dgvPacientes
             // 
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPacientes.Location = new Point(9, 252);
-            dgvPacientes.Margin = new Padding(3, 4, 3, 4);
+            dgvPacientes.Location = new Point(8, 214);
             dgvPacientes.Name = "dgvPacientes";
             dgvPacientes.RowHeadersWidth = 51;
-            dgvPacientes.Size = new Size(887, 448);
+            dgvPacientes.Size = new Size(776, 381);
             dgvPacientes.TabIndex = 11;
             // 
             // btnEliminarPaciente
             // 
-            btnEliminarPaciente.Location = new Point(312, 197);
-            btnEliminarPaciente.Margin = new Padding(3, 4, 3, 4);
+            btnEliminarPaciente.Location = new Point(273, 167);
             btnEliminarPaciente.Name = "btnEliminarPaciente";
-            btnEliminarPaciente.Size = new Size(127, 31);
+            btnEliminarPaciente.Size = new Size(111, 26);
             btnEliminarPaciente.TabIndex = 10;
             btnEliminarPaciente.Text = "Eliminar";
             btnEliminarPaciente.UseVisualStyleBackColor = true;
             // 
             // btnEditarPaciente
             // 
-            btnEditarPaciente.Location = new Point(178, 197);
-            btnEditarPaciente.Margin = new Padding(3, 4, 3, 4);
+            btnEditarPaciente.Location = new Point(156, 167);
             btnEditarPaciente.Name = "btnEditarPaciente";
-            btnEditarPaciente.Size = new Size(127, 31);
+            btnEditarPaciente.Size = new Size(111, 26);
             btnEditarPaciente.TabIndex = 9;
             btnEditarPaciente.Text = "Editar";
             btnEditarPaciente.UseVisualStyleBackColor = true;
             // 
             // btnGuardarPaciente
             // 
-            btnGuardarPaciente.Location = new Point(45, 197);
-            btnGuardarPaciente.Margin = new Padding(3, 4, 3, 4);
+            btnGuardarPaciente.Location = new Point(39, 167);
             btnGuardarPaciente.Name = "btnGuardarPaciente";
-            btnGuardarPaciente.Size = new Size(127, 31);
+            btnGuardarPaciente.Size = new Size(111, 26);
             btnGuardarPaciente.TabIndex = 8;
             btnGuardarPaciente.Text = "Guardar";
             btnGuardarPaciente.UseVisualStyleBackColor = true;
             // 
             // txtFechaNacimiento
             // 
-            txtFechaNacimiento.Location = new Point(518, 136);
-            txtFechaNacimiento.Margin = new Padding(3, 4, 3, 4);
+            txtFechaNacimiento.Location = new Point(453, 116);
             txtFechaNacimiento.Name = "txtFechaNacimiento";
-            txtFechaNacimiento.Size = new Size(342, 27);
+            txtFechaNacimiento.Size = new Size(300, 25);
             txtFechaNacimiento.TabIndex = 7;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(518, 112);
+            label10.Location = new Point(453, 95);
             label10.Name = "label10";
-            label10.Size = new Size(149, 20);
+            label10.Size = new Size(130, 17);
             label10.TabIndex = 6;
             label10.Text = "Fecha de Nacimiento";
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(45, 136);
-            txtTelefono.Margin = new Padding(3, 4, 3, 4);
+            txtTelefono.Location = new Point(39, 116);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(342, 27);
+            txtTelefono.Size = new Size(300, 25);
             txtTelefono.TabIndex = 5;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(45, 112);
+            label9.Location = new Point(39, 95);
             label9.Name = "label9";
-            label9.Size = new Size(67, 20);
+            label9.Size = new Size(58, 17);
             label9.TabIndex = 4;
             label9.Text = "Teléfono";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(518, 55);
-            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Location = new Point(453, 47);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(342, 27);
+            txtEmail.Size = new Size(300, 25);
             txtEmail.TabIndex = 3;
             txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(518, 31);
+            label8.Location = new Point(453, 26);
             label8.Name = "label8";
-            label8.Size = new Size(46, 20);
+            label8.Size = new Size(39, 17);
             label8.TabIndex = 2;
             label8.Text = "Email";
             // 
             // txtNombrePaciente
             // 
-            txtNombrePaciente.Location = new Point(45, 55);
-            txtNombrePaciente.Margin = new Padding(3, 4, 3, 4);
+            txtNombrePaciente.Location = new Point(39, 47);
             txtNombrePaciente.Name = "txtNombrePaciente";
-            txtNombrePaciente.Size = new Size(342, 27);
+            txtNombrePaciente.Size = new Size(300, 25);
             txtNombrePaciente.TabIndex = 1;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(45, 31);
+            label7.Location = new Point(39, 26);
             label7.Name = "label7";
-            label7.Size = new Size(134, 20);
+            label7.Size = new Size(118, 17);
             label7.TabIndex = 0;
             label7.Text = "Nombre Completo";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 748);
+            ClientSize = new Size(800, 636);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Sistema de Gestión de Turnos Médicos";
             Load += Form1_Load;
