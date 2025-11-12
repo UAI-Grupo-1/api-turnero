@@ -20,11 +20,13 @@ namespace DAL
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = @"SELECT m.IdMedico, m.Nombre, m.Apellido, m.DNI, m.Telefono, m.Email, m.Especialidad,
-                            e.NombreEspecialidad FROM Medico m
-                            INNER JOIN Especialidad e ON m.IdEspecialidad = e.IdEspecialidad WHERE m.IdEspecialidad = @IdEspecialidad";
+                var query = @"SELECT m.IdMedico, m.Nombre, m.Apellido, m.DNI, m.Telefono, m.Email, m.IdEspecialidad,
+                      e.NombreEspecialidad 
+                      FROM Medico m
+                      INNER JOIN Especialidad e ON m.IdEspecialidad = e.IdEspecialidad 
+                      WHERE m.IdEspecialidad = @IdEspecialidad";
 
-                using (var command = new SqlCommand(connectionString))
+                using (var command = new SqlCommand(query, connection)) // corrección
                 {
                     command.Parameters.AddWithValue("@IdEspecialidad", especialidad);
 
