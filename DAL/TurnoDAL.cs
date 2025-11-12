@@ -19,14 +19,15 @@ namespace DAL
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = @"INSERT INTO Turno (IdMedico, IdPaciente, Fecha, Hora, Estado, Observaciones)
-                            VALUES (@IdMedico, @IdPaciente, @Fecha, @Hora, @Estado, @Observaciones);
+                var query = @"INSERT INTO Turno (IdMedico, IdPaciente, IdUsuario, Fecha, Hora, Estado, Observaciones)
+                            VALUES (@IdMedico, @IdPaciente, @IdUsuario, @Fecha, @Hora, @Estado, @Observaciones);
                             SELECT SCOPE_IDENTITY();";
 
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@IdMedico", turno.IdMedico);
                     command.Parameters.AddWithValue("@IdPaciente", turno.IdPaciente);
+                    command.Parameters.AddWithValue("@IdUsuario", turno.IdUsuario);
                     command.Parameters.AddWithValue("@Fecha", turno.Fecha);
                     command.Parameters.AddWithValue("@Hora", turno.Hora);
                     command.Parameters.AddWithValue("@Estado", turno.Estado);

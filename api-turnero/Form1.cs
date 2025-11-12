@@ -13,6 +13,10 @@ namespace api_turnero
          ************************/
         private UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
 
+        // Objeto para almacenar el usuario logueado
+        // Sirve para saber quien creo un Turno
+        private Usuario usuarioActual = null;
+
         public Form1()
         {
             LogIn();
@@ -52,8 +56,14 @@ namespace api_turnero
                 }
                 else
                 {
+                    usuario = this.usuarioBusiness.GetUserByName(username);
                     LogIn();
                 }
+            }
+            else
+            {
+                usuarioActual = usuario;
+                MessageBox.Show($"Bienvenido, {usuarioActual.Username}!", "Login Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -224,7 +234,6 @@ namespace api_turnero
         // Boton Cancelar
         private void btnCancelarTurno_Click(object sender, EventArgs e)
         {
-            // Lógica para cancelar un turno seleccionado en la grilla de agenda
             if (dgvAgenda.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione un turno para cancelar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -240,6 +249,13 @@ namespace api_turnero
             {
 
             }
+        }
+
+        // Boton Confirmar Turno
+        private void btnConfirmarTurnoAgenda_Click(object sender, EventArgs e)
+        {
+            // Importante validar que usuario != null porque pueden entrar sin iniciar sesion
+
         }
     }
 }

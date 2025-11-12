@@ -115,6 +115,7 @@ namespace api_turnero
             btnConfirmarTurnoAgenda.TabIndex = 5;
             btnConfirmarTurnoAgenda.Text = "Confirmar Turno";
             btnConfirmarTurnoAgenda.UseVisualStyleBackColor = true;
+            btnConfirmarTurnoAgenda.Click += btnConfirmarTurnoAgenda_Click;
             // 
             // btnCancelarTurno
             // 
