@@ -100,7 +100,7 @@ namespace api_turnero
             tabAgenda.Controls.Add(label1);
             tabAgenda.Location = new Point(4, 26);
             tabAgenda.Name = "tabAgenda";
-            tabAgenda.Padding = new Padding(3, 3, 3, 3);
+            tabAgenda.Padding = new Padding(3);
             tabAgenda.Size = new Size(792, 606);
             tabAgenda.TabIndex = 0;
             tabAgenda.Text = "Agenda de Turnos";
@@ -124,6 +124,7 @@ namespace api_turnero
             btnCancelarTurno.TabIndex = 4;
             btnCancelarTurno.Text = "Cancelar Turno";
             btnCancelarTurno.UseVisualStyleBackColor = true;
+            btnCancelarTurno.Click += btnCancelarTurno_Click;
             // 
             // dgvAgenda
             // 
@@ -168,7 +169,7 @@ namespace api_turnero
             tabNuevoTurno.Controls.Add(groupBox1);
             tabNuevoTurno.Location = new Point(4, 26);
             tabNuevoTurno.Name = "tabNuevoTurno";
-            tabNuevoTurno.Padding = new Padding(3, 3, 3, 3);
+            tabNuevoTurno.Padding = new Padding(3);
             tabNuevoTurno.Size = new Size(792, 606);
             tabNuevoTurno.TabIndex = 1;
             tabNuevoTurno.Text = "Nuevo Turno";

@@ -220,5 +220,26 @@ namespace api_turnero
         {
 
         }
+
+        // Boton Cancelar
+        private void btnCancelarTurno_Click(object sender, EventArgs e)
+        {
+            // Lógica para cancelar un turno seleccionado en la grilla de agenda
+            if (dgvAgenda.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un turno para cancelar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Obtener detalles del turno seleccionado
+            var turnoSeleccionado = dgvAgenda.SelectedRows[0];
+            string paciente = turnoSeleccionado.Cells["Paciente"].Value.ToString();
+            string fechaHora = turnoSeleccionado.Cells["Hora"].Value.ToString();
+            // Confirmar cancelación
+            var resultado = MessageBox.Show($"¿Está seguro que desea cancelar el turno de {paciente} a las {fechaHora}?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+            }
+        }
     }
 }
