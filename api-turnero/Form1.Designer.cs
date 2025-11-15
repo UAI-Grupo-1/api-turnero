@@ -30,7 +30,6 @@ namespace api_turnero
         {
             tabControl1 = new TabControl();
             tabAgenda = new TabPage();
-            btnConfirmarTurnoAgenda = new Button();
             btnCancelarTurno = new Button();
             dgvAgenda = new DataGridView();
             label2 = new Label();
@@ -50,7 +49,6 @@ namespace api_turnero
             cmbEspecialidades = new ComboBox();
             groupBox1 = new GroupBox();
             lblPacienteSeleccionado = new Label();
-            btnNuevoPaciente = new Button();
             btnBuscarPaciente = new Button();
             txtBuscarPaciente = new TextBox();
             label3 = new Label();
@@ -67,6 +65,8 @@ namespace api_turnero
             label8 = new Label();
             txtNombrePaciente = new TextBox();
             label7 = new Label();
+            comboBox1 = new ComboBox();
+            label11 = new Label();
             tabControl1.SuspendLayout();
             tabAgenda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAgenda).BeginInit();
@@ -92,7 +92,6 @@ namespace api_turnero
             // 
             // tabAgenda
             // 
-            tabAgenda.Controls.Add(btnConfirmarTurnoAgenda);
             tabAgenda.Controls.Add(btnCancelarTurno);
             tabAgenda.Controls.Add(dgvAgenda);
             tabAgenda.Controls.Add(label2);
@@ -105,15 +104,6 @@ namespace api_turnero
             tabAgenda.TabIndex = 0;
             tabAgenda.Text = "Agenda de Turnos";
             tabAgenda.UseVisualStyleBackColor = true;
-            // 
-            // btnConfirmarTurnoAgenda
-            // 
-            btnConfirmarTurnoAgenda.Location = new Point(626, 558);
-            btnConfirmarTurnoAgenda.Name = "btnConfirmarTurnoAgenda";
-            btnConfirmarTurnoAgenda.Size = new Size(158, 26);
-            btnConfirmarTurnoAgenda.TabIndex = 5;
-            btnConfirmarTurnoAgenda.Text = "Confirmar Turno";
-            btnConfirmarTurnoAgenda.UseVisualStyleBackColor = true;
             // 
             // btnCancelarTurno
             // 
@@ -179,8 +169,9 @@ namespace api_turnero
             btnConfirmarTurno.Name = "btnConfirmarTurno";
             btnConfirmarTurno.Size = new Size(206, 61);
             btnConfirmarTurno.TabIndex = 3;
-            btnConfirmarTurno.Text = "Confirmar Turno";
+            btnConfirmarTurno.Text = "Crear Turno";
             btnConfirmarTurno.UseVisualStyleBackColor = true;
+            btnConfirmarTurno.Click += btnConfirmarTurno_Click;
             // 
             // groupBox3
             // 
@@ -202,6 +193,8 @@ namespace api_turnero
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(comboBox1);
             groupBox2.Controls.Add(listHorarios);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(dtpFechaTurno);
@@ -278,7 +271,6 @@ namespace api_turnero
             // groupBox1
             // 
             groupBox1.Controls.Add(lblPacienteSeleccionado);
-            groupBox1.Controls.Add(btnNuevoPaciente);
             groupBox1.Controls.Add(btnBuscarPaciente);
             groupBox1.Controls.Add(txtBuscarPaciente);
             groupBox1.Controls.Add(label3);
@@ -299,15 +291,6 @@ namespace api_turnero
             lblPacienteSeleccionado.TabIndex = 4;
             lblPacienteSeleccionado.Text = "Paciente Seleccionado: Ninguno";
             // 
-            // btnNuevoPaciente
-            // 
-            btnNuevoPaciente.Location = new Point(647, 50);
-            btnNuevoPaciente.Name = "btnNuevoPaciente";
-            btnNuevoPaciente.Size = new Size(123, 26);
-            btnNuevoPaciente.TabIndex = 3;
-            btnNuevoPaciente.Text = "Nuevo Paciente";
-            btnNuevoPaciente.UseVisualStyleBackColor = true;
-            // 
             // btnBuscarPaciente
             // 
             btnBuscarPaciente.Location = new Point(516, 50);
@@ -316,6 +299,7 @@ namespace api_turnero
             btnBuscarPaciente.TabIndex = 2;
             btnBuscarPaciente.Text = "Buscar";
             btnBuscarPaciente.UseVisualStyleBackColor = true;
+            btnBuscarPaciente.Click += btnBuscarPaciente_Click;
             // 
             // txtBuscarPaciente
             // 
@@ -329,9 +313,9 @@ namespace api_turnero
             label3.AutoSize = true;
             label3.Location = new Point(16, 31);
             label3.Name = "label3";
-            label3.Size = new Size(214, 17);
+            label3.Size = new Size(176, 17);
             label3.TabIndex = 0;
-            label3.Text = "Buscar Paciente por Nombre o DNI";
+            label3.Text = "Buscar Paciente por Nombre";
             // 
             // tabPacientes
             // 
@@ -389,10 +373,11 @@ namespace api_turnero
             btnGuardarPaciente.TabIndex = 8;
             btnGuardarPaciente.Text = "Guardar";
             btnGuardarPaciente.UseVisualStyleBackColor = true;
+            btnGuardarPaciente.Click += btnGuardarPaciente_Click;
             // 
             // txtFechaNacimiento
             // 
-            txtFechaNacimiento.Location = new Point(453, 116);
+            txtFechaNacimiento.Location = new Point(484, 116);
             txtFechaNacimiento.Name = "txtFechaNacimiento";
             txtFechaNacimiento.Size = new Size(300, 25);
             txtFechaNacimiento.TabIndex = 7;
@@ -400,7 +385,7 @@ namespace api_turnero
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(453, 95);
+            label10.Location = new Point(484, 95);
             label10.Name = "label10";
             label10.Size = new Size(130, 17);
             label10.TabIndex = 6;
@@ -424,7 +409,7 @@ namespace api_turnero
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(453, 47);
+            txtEmail.Location = new Point(484, 47);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(300, 25);
             txtEmail.TabIndex = 3;
@@ -432,7 +417,7 @@ namespace api_turnero
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(453, 26);
+            label8.Location = new Point(484, 26);
             label8.Name = "label8";
             label8.Size = new Size(39, 17);
             label8.TabIndex = 2;
@@ -453,6 +438,23 @@ namespace api_turnero
             label7.Size = new Size(118, 17);
             label7.TabIndex = 0;
             label7.Text = "Nombre Completo";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(393, 109);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(244, 25);
+            comboBox1.TabIndex = 7;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(393, 88);
+            label11.Name = "label11";
+            label11.Size = new Size(139, 17);
+            label11.TabIndex = 8;
+            label11.Text = "Seleccione un Paciente";
             // 
             // Form1
             // 
@@ -490,12 +492,10 @@ namespace api_turnero
         private Label label2;
         private DataGridView dgvAgenda;
         private Button btnCancelarTurno;
-        private Button btnConfirmarTurnoAgenda;
         private GroupBox groupBox1;
         private Label label3;
         private TextBox txtBuscarPaciente;
         private Button btnBuscarPaciente;
-        private Button btnNuevoPaciente;
         private Label lblPacienteSeleccionado;
         private GroupBox groupBox2;
         private Label label4;
@@ -520,5 +520,7 @@ namespace api_turnero
         private Button btnEditarPaciente;
         private Button btnEliminarPaciente;
         private DataGridView dgvPacientes;
+        private Label label11;
+        private ComboBox comboBox1;
     }
 }

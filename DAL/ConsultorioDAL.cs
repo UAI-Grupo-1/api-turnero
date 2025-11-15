@@ -38,6 +38,7 @@ namespace DAL
             }
             return consultorios;
         }
+
         public Consultorio ObtenerPorId(int id)
         {
             Consultorio consultorio = null;

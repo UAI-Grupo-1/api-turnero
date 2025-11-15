@@ -10,11 +10,6 @@ namespace Mapper
 {
     public class EspecialidadMapper
     {
-        /*
-         * id_especialidad INT PRIMARY KEY IDENTITY(1,1),
-         * descripcion VARCHAR(100)
-         */
-
         public static Especialidad Map(SqlDataReader reader, Especialidad especialidad)
         {
             especialidad.IdEspecialidad = Convert.ToInt32(reader["id_especialidad"]);

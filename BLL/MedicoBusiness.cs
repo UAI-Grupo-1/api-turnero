@@ -31,5 +31,11 @@ namespace BLL
         {
             return medicoDAL.ObtenerConsultoriosPorMedico(idMedico);
         }
+
+        public List<Medico> ObtenerMedicos()
+        {
+            return medicoDAL.ObtenerTodosLosMedicos();
+        }
+
     }
 }

@@ -11,19 +11,13 @@ namespace Mapper
     public class PacienteMapper
     {
 
-        /*
-         * IdPaciente, Nombre, Apellido, DNI, Telefono, Email, FechaNacimiento
-         */
-
         public static Paciente Map(SqlDataReader reader, Paciente paciente)
         {
-            paciente.IdPaciente = Convert.ToInt32(reader["IdPaciente"]);
-            paciente.Nombre = reader["Nombre"].ToString();
-            paciente.Apellido = reader["Apellido"].ToString();
-            paciente.DNI = reader["DNI"].ToString();
-            paciente.Telefono = reader["Telefono"].ToString();
-            paciente.Email = reader["Email"].ToString();
-            paciente.FechaNacimiento = Convert.ToDateTime(reader["FechaNacimiento"]);
+            paciente.IdPaciente = Convert.ToInt32(reader["id_paciente"]);
+            paciente.Nombre = reader["nombre"].ToString();
+            paciente.Email = reader["email"].ToString();
+            paciente.Telefono = reader["telefono"].ToString();
+            paciente.FechaNacimiento = Convert.ToDateTime(reader["fecha_nacimiento"]);
             return paciente;
         }
     }

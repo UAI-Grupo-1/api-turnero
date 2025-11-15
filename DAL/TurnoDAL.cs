@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace DAL
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = @"INSERT INTO Turno (IdMedico, IdPaciente, IdUsuario, Fecha, Hora, Estado, Observaciones)
-                            VALUES (@IdMedico, @IdPaciente, @IdUsuario, @Fecha, @Hora, @Estado, @Observaciones);
+                var query = @"INSERT INTO Turno (id_medico, id_paciente, id_usuario, fecha_turno, estado)
+                            VALUES (@IdMedico, @IdPaciente, @IdUsuario, @FechaTurno, @Estado);
                             SELECT SCOPE_IDENTITY();";
 
                 using (var command = new SqlCommand(query, connection))
@@ -28,79 +29,29 @@ namespace DAL
                     command.Parameters.AddWithValue("@IdMedico", turno.IdMedico);
                     command.Parameters.AddWithValue("@IdPaciente", turno.IdPaciente);
                     command.Parameters.AddWithValue("@IdUsuario", turno.IdUsuario);
-                    command.Parameters.AddWithValue("@Fecha", turno.Fecha);
-                    command.Parameters.AddWithValue("@Hora", turno.Hora);
+                    command.Parameters.AddWithValue("@FechaTurno", turno.FechaHora);
                     command.Parameters.AddWithValue("@Estado", turno.Estado);
-                    command.Parameters.AddWithValue("@Observaciones", turno.Observaciones);
 
                     return Convert.ToInt32(command.ExecuteScalar());
                 }
             }
         }
-        public bool ExisteTurnoEnFecha(int medicoId, DateTime fecha, TimeSpan hora)
+
+        public List<Turno> ObtenerTodosLosTurnos()
         {
+            List<Turno> turnos = new List<Turno>();
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = @"SELECT COUNT(*) FROM Turno
-                            WHERE IdMedico = @IdMedico AND Fecha = @Fecha AND Hora = @Hora AND Estado != 'Cancelado'";
-
+                var query = "SELECT id_turno, id_medico, id_paciente, id_usuario, fecha_turno, estado FROM Turno";
+                
                 using (var command = new SqlCommand(query, connection))
+                using (var reader = command.ExecuteReader())
                 {
-                    command.Parameters.AddWithValue("@IdMedico", medicoId);
-                    command.Parameters.AddWithValue("@Fecha", fecha);
-                    command.Parameters.AddWithValue("@Hora", hora);
-
-                    return Convert.ToInt32(command.ExecuteScalar()) > 0;
-                }
-            }
-        }
-        public List<Turno> ObtenerTurnosPorMedicoYFecha(int medicoId, DateTime Fecha)
-        {
-            var turnos = new List<Turno>();
-
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                var query = @"SELECT t.IdTurno, t.IdMedico, t.IdPaciente, t.Fecha, t.Hora, t.Estado, t.Observaciones,
-                            m.Nombre, m.Apellido, p.Nombre, p.Apellido
-                            FROM Turno t
-                            INNER JOIN Medico m ON t.IdMedico = m.IdMedico
-                            INNER JOIN Paciente p ON t.IdPaciente = p.IdPaciente
-                            WHERE t.IdMedico = @IdMedico AND t.Fecha = @Fecha
-                            ORDER BY t.Hora";
-
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@IdMedico", medicoId);
-                    command.Parameters.AddWithValue("@Fecha", Fecha);
-
-                    using (var reader = command.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            turnos.Add(new Turno
-                            {
-                                IdTurno = reader.GetInt32(0),
-                                IdMedico = reader.GetInt32(1),
-                                IdPaciente = reader.GetInt32(2),
-                                Fecha = reader.GetDateTime(3),
-                                Hora = reader.GetTimeSpan(4),
-                                Estado = reader.GetString(5),
-                                Observaciones = reader.GetString(6),
-                                Medico = new Medico
-                                {
-                                    Nombre = reader.GetString(7),
-                                    Apellido = reader.GetString(8),
-                                },
-                                Paciente = new Paciente
-                                {
-                                    Nombre = reader.GetString(9),
-                                    Apellido = reader.GetString(10),
-                                }
-                            });
-
-                        }
+                        var turno = TurnoMapper.Map(reader, new Turno());
+                        turnos.Add(turno);
                     }
                 }
             }

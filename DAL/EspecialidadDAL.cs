@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,18 +21,16 @@ namespace DAL
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = "SELECT IdEspecialidad, descripcion FROM Especialidad";
+                var query = "SELECT id_especialidad, descripcion FROM Especialidad";
 
                 using (var command = new SqlCommand(query, connection))
                 using (var reader = command.ExecuteReader())
                 {
                     while(reader.Read())
                     {
-                        especialidades.Add(new Especialidad
-                        {
-                            IdEspecialidad = reader.GetInt32(0),
-                            descripcion = reader.GetString(1),
-                        });
+                        var especialidad = new Especialidad();
+                        EspecialidadMapper.Map(reader, especialidad);
+                        especialidades.Add(especialidad);
                     }
                 }
             }

@@ -3,6 +3,7 @@ using Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,7 @@ namespace DAL
 {
     public class UsuarioDAL
     {
-
-        /*
-         * 
-CREATE TABLE Usuario (
-    id_usuario INT PRIMARY KEY IDENTITY(1,1),
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(100)
-);
-         */
+        string connectionString = ConfigurationManager.ConnectionStrings["dbApiTurnero"].ConnectionString;
 
         // Obtener usuario por nombre de usuario
         public Usuario GetUsuarioByUsername(string username)
@@ -46,6 +38,28 @@ CREATE TABLE Usuario (
                     }
                 }
             }
+        }
+
+        public Usuario ObtenerPorId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var query = "SELECT id_usuario, username, password, email FROM Usuario WHERE id_usuario = @Id";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return UsuarioMapper.Map(reader, new Usuario());
+                        }
+                    }
+                }
+            }
+            return null;
         }
     }
 }

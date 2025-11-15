@@ -13,18 +13,13 @@ namespace Mapper
         public static Turno Map(SqlDataReader reader, Turno turno)
         {
             // Mapear los datos del SqlDataReader a una instancia de Turno
-            /*
-             * 
-                IdMedico, IdPaciente, IdUsuario, Fecha, Hora, Estado, Observaciones
-             */
-            turno.IdTurno = Convert.ToInt32(reader["IdTurno"]);
-            turno.IdMedico = Convert.ToInt32(reader["IdMedico"]);
-            turno.IdPaciente = Convert.ToInt32(reader["IdPaciente"]);
-            turno.IdUsuario = Convert.ToInt32(reader["IdUsuario"]);
-            turno.Fecha = Convert.ToDateTime(reader["Fecha"]);
-            turno.Hora = (TimeSpan)(reader["Hora"]);
-            turno.Estado = reader["Estado"].ToString();
-            turno.Observaciones = reader["Observaciones"].ToString();
+            // Columnas: id_turno, id_medico, id_paciente, id_usuario, fecha_turno, estado
+            turno.IdTurno = Convert.ToInt32(reader["id_turno"]);
+            turno.IdMedico = Convert.ToInt32(reader["id_medico"]);
+            turno.IdPaciente = Convert.ToInt32(reader["id_paciente"]);
+            turno.IdUsuario = Convert.ToInt32(reader["id_usuario"]);
+            turno.FechaHora = Convert.ToDateTime(reader["fecha_turno"]);
+            turno.Estado = reader["estado"].ToString();
 
             return turno;
         }
