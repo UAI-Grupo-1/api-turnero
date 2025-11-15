@@ -20,7 +20,7 @@ namespace DAL
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = "SELECT IdEspecialidad, NombreEspecialidad FROM Especialidad";
+                var query = "SELECT IdEspecialidad, descripcion FROM Especialidad";
 
                 using (var command = new SqlCommand(query, connection))
                 using (var reader = command.ExecuteReader())
@@ -30,7 +30,7 @@ namespace DAL
                         especialidades.Add(new Especialidad
                         {
                             IdEspecialidad = reader.GetInt32(0),
-                            NombreEspecialidad = reader.GetString(1),
+                            descripcion = reader.GetString(1),
                         });
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace DAL
             {
                 connection.Open();
                 var query = @"SELECT m.IdMedico, m.Nombre, m.Apellido, m.DNI, m.Telefono, m.Email, m.IdEspecialidad,
-                      e.NombreEspecialidad 
+                      e.descripcion 
                       FROM Medico m
                       INNER JOIN Especialidad e ON m.IdEspecialidad = e.IdEspecialidad 
                       WHERE m.IdEspecialidad = @IdEspecialidad";
@@ -34,23 +35,18 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            medicos.Add(new Medico
-                            {
-                                IdMedico = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Apellido = reader.GetString(2),
-                                DNI = reader.GetString(3),
-                                Telefono = reader.GetString(4),
-                                Email = reader.GetString(5),
-                                IdEspecialidad = reader.GetInt32(6),
-                                Especialidad = new Especialidad { NombreEspecialidad = reader.GetString(7) }
-                            });
+                            var medico = new Medico();
+
+                            MedicoMapper.Map(reader, medico);
+                            medicos.Add(medico);
+                            return medicos;
                         }
                     }
                 }
+                return null;
             }
-            return medicos;
         }
+
         public List<Consultorio> ObtenerConsultoriosPorMedico(int idMedico)
         {
             var consultorios = new List<Consultorio>();
@@ -71,19 +67,16 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            consultorios.Add(new Consultorio
-                            {
-                                IdConsultorio = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Direccion = reader.GetString(2),
-                                Telefono = reader.GetString(3),
-                                Email = reader.GetString(4)
-                            });
+
+                            Consultorio consultorio = new Consultorio();
+
+                            ConsultorioMapper.Map(reader, consultorio);
+
+                            consultorios.Add(consultorio);
                         }
                     }
                 }
             }
-
             return consultorios;
         }
     }

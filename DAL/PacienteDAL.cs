@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -29,22 +30,15 @@ namespace DAL
                     {
                         if(reader.Read())
                         {
-                            paciente = new Paciente
-                            {
-                                IdPaciente = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Apellido = reader.GetString(2),
-                                DNI = reader.GetString(3),
-                                Telefono = reader.GetString(4),
-                                Email = reader.GetString(5),
-                                FechaNacimiento = reader.GetDateTime(6)
-                            };
+                            paciente = PacienteMapper.Map(reader, new Paciente());
+                            return paciente;
                         }
                     }
                 }
             }
-            return paciente;
+            return null;
         }
+
         public int Insertar(Paciente paciente)
         {
             using (var connection = new SqlConnection(connectionString))

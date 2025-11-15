@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Mapper;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,21 +21,18 @@ namespace DAL
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = "SELECT IdConsultorio, Nombre, Direccion, Telefono, Email FROM Consultorio";
+                var query = "SELECT IdConsultorio, direccion FROM Consultorio";
 
                 using (var command = new SqlCommand(query, connection))
                 using (var reader = command.ExecuteReader())
                 {
                     while(reader.Read())
                     {
-                        consultorios.Add(new Consultorio
-                        {
-                            IdConsultorio = reader.GetInt32(0),
-                            Nombre = reader.GetString(1),
-                            Direccion = reader.GetString(2),
-                            Telefono = reader.GetString(3),
-                            Email = reader.GetString(4)
-                        });
+                        Consultorio consultorio = new Consultorio();
+
+                        ConsultorioMapper.Map(reader, consultorio);
+
+                        consultorios.Add(consultorio);
                     }
                 }
             }
@@ -47,7 +45,7 @@ namespace DAL
             using (var connection = new SqlConnection (connectionString))
             {
                 connection.Open();
-                var query = "SELECT IdConsultorio, Nombre, Direccion, Telefono, Email FROM Consultorio WHERE IdConsultorio = @Id";
+                var query = "SELECT IdConsultorio, direccion FROM Consultorio WHERE IdConsultorio = @Id";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -56,20 +54,12 @@ namespace DAL
                     {
                         if(reader.Read())
                         {
-                            consultorio = new Consultorio
-                            {
-                                IdConsultorio = reader.GetInt32(0),
-                                Nombre = reader.GetString(1),
-                                Direccion = reader.GetString(2),
-                                Telefono = reader.GetString(3),
-                                Email = reader.GetString(4)
-                            };
+                            return ConsultorioMapper.Map(reader, new Consultorio());
                         }
                     }
                 }
+                return null;
             }
-            return consultorio;
         }
-
     }
 }
