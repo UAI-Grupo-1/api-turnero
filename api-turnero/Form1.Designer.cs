@@ -105,7 +105,6 @@ namespace api_turnero
             tabAgenda.TabIndex = 0;
             tabAgenda.Text = "Agenda de Turnos";
             tabAgenda.UseVisualStyleBackColor = true;
-            tabAgenda.Click += tabAgenda_Click;
             // 
             // btnConfirmarTurnoAgenda
             // 
@@ -115,7 +114,6 @@ namespace api_turnero
             btnConfirmarTurnoAgenda.TabIndex = 5;
             btnConfirmarTurnoAgenda.Text = "Confirmar Turno";
             btnConfirmarTurnoAgenda.UseVisualStyleBackColor = true;
-            btnConfirmarTurnoAgenda.Click += btnConfirmarTurnoAgenda_Click;
             // 
             // btnCancelarTurno
             // 
@@ -125,7 +123,6 @@ namespace api_turnero
             btnCancelarTurno.TabIndex = 4;
             btnCancelarTurno.Text = "Cancelar Turno";
             btnCancelarTurno.UseVisualStyleBackColor = true;
-            btnCancelarTurno.Click += btnCancelarTurno_Click;
             // 
             // dgvAgenda
             // 
@@ -151,7 +148,6 @@ namespace api_turnero
             dtpAgenda.Name = "dtpAgenda";
             dtpAgenda.Size = new Size(224, 25);
             dtpAgenda.TabIndex = 1;
-            dtpAgenda.ValueChanged += dtpAgenda_ValueChanged;
             // 
             // label1
             // 
@@ -432,7 +428,6 @@ namespace api_turnero
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(300, 25);
             txtEmail.TabIndex = 3;
-            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // label8
             // 
@@ -467,7 +462,6 @@ namespace api_turnero
             Controls.Add(tabControl1);
             Name = "Form1";
             Text = "Sistema de Gestión de Turnos Médicos";
-            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabAgenda.ResumeLayout(false);
             tabAgenda.PerformLayout();
