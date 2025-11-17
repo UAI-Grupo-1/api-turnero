@@ -38,6 +38,9 @@ namespace api_turnero
             LoadMedicos();
             LoadPacientes();
             LoadPacientesInCmb();
+
+            //metodo par ahorarios
+            LoadHorarios();
         }
 
         private void LogIn()
@@ -300,11 +303,25 @@ namespace api_turnero
                 MessageBox.Show("Por favor, seleccione un médico, especialidad y paciente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
+            if (cmbHorarios.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un horario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             Medico medicoSeleccionado = (Medico)cmbMedicos.SelectedItem;
             Especialidad especialidadSeleccionada = (Especialidad)cmbEspecialidades.SelectedItem;
             Paciente pacienteSeleccionado = (Paciente)comboBox1.SelectedItem;
-            DateTime fechaTurno = dtpFechaTurno.Value;
+
+            //Fecha seleccionada en el DateTimePicker
+            DateTime fecha = dtpFechaTurno.Value.Date;
+
+            //Horario seleccionado en el combo
+            string hora = cmbHorarios.SelectedItem.ToString();
+
+            //Combinar fecha + hora correctamente
+            DateTime fechaTurno = DateTime.Parse($"{fecha:yyyy-MM-dd} {hora}");
 
             Turno nuevoTurno = new Turno
             {
@@ -317,7 +334,7 @@ namespace api_turnero
                 Paciente = pacienteSeleccionado,
                 Usuario = usuarioActual
             };
-            
+
             try
             {
                 turnoBusiness.InsertarTurno(nuevoTurno);
@@ -328,6 +345,78 @@ namespace api_turnero
             {
                 MessageBox.Show($"Error al crear el turno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            //if (cmbMedicos.SelectedItem == null || cmbEspecialidades.SelectedItem == null || comboBox1.SelectedItem == null)
+            //{
+            //    MessageBox.Show("Por favor, seleccione un médico, especialidad y paciente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+            ////cmbHorarios
+            //if (cmbHorarios.SelectedItem == null)
+            //{
+            //    MessageBox.Show("Por favor, seleccione un horario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+
+            //Medico medicoSeleccionado = (Medico)cmbMedicos.SelectedItem;
+            //Especialidad especialidadSeleccionada = (Especialidad)cmbEspecialidades.SelectedItem;
+            //Paciente pacienteSeleccionado = (Paciente)comboBox1.SelectedItem;
+            //DateTime fechaTurno = dtpFechaTurno.Value;
+
+            ////Horario del combo
+            //string hora = cmbHorarios.SelectedItem.ToString();
+
+            ////Combinar fecha + hora
+            //DateTime fechaTurno = DateTime.Parse($"{fecha:yyyy-MM-dd} {hora}");
+
+            //Turno nuevoTurno = new Turno
+            //{
+            //    IdMedico = medicoSeleccionado.IdMedico,
+            //    IdPaciente = pacienteSeleccionado.IdPaciente,
+            //    IdUsuario = usuarioActual?.IdUsuario ?? 0,
+            //    FechaHora = fechaTurno,
+            //    Estado = "Programado",
+            //    Medico = medicoSeleccionado,
+            //    Paciente = pacienteSeleccionado,
+            //    Usuario = usuarioActual
+            //};
+
+            //try
+            //{
+            //    turnoBusiness.InsertarTurno(nuevoTurno);
+            //    MessageBox.Show("Turno creado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    LoadTurnos();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Error al crear el turno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
+
+        private void listHorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadHorarios()
+        {
+            DateTime inicio = DateTime.Today.AddHours(8);   // 08:00
+            DateTime fin = DateTime.Today.AddHours(14);     // 14:00
+            TimeSpan intervalo = TimeSpan.FromMinutes(30);  // Turnos cada 30 minutos
+
+            cmbHorarios.Items.Clear();
+
+            while (inicio <= fin)
+            {
+                cmbHorarios.Items.Add(inicio.ToString("HH:mm"));
+                inicio = inicio.Add(intervalo);
+            }
+
+            if (cmbHorarios.Items.Count > 0)
+                cmbHorarios.SelectedIndex = 0;
+        }
+
     }
 }
