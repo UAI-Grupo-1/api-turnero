@@ -26,8 +26,8 @@ namespace api_turnero.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NO-PROBLEM\\SQLEXPRESS=api_db_turnero;Integrated Security=True;Trust S" +
-            "erver Certificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-JVFV5VF\\SQLEXPRESS01=api_db_turnero;Integrated Security=True;" +
+            "Trust Server Certificate=True")]
         public string dbApiTurnero {
             get {
                 return ((string)(this["dbApiTurnero"]));

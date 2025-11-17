@@ -106,5 +106,41 @@ namespace DAL
             return null;
         }
 
+        public int Actualizar(Paciente paciente)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var query = @"UPDATE Paciente SET nombre = @Nombre, email = @Email, telefono = @Telefono, fecha_nacimiento = @FechaNacimiento
+                              WHERE id_paciente = @Id";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Nombre", paciente.Nombre);
+                    command.Parameters.AddWithValue("@Email", paciente.Email);
+                    command.Parameters.AddWithValue("@Telefono", paciente.Telefono);
+                    command.Parameters.AddWithValue("@FechaNacimiento", paciente.FechaNacimiento);
+                    command.Parameters.AddWithValue("@Id", paciente.IdPaciente);
+
+                    return command.ExecuteNonQuery(); // returns number of rows affected
+                }
+            }
+        }
+
+        public int Eliminar(int id)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var query = @"DELETE FROM Paciente WHERE id_paciente = @Id";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    return command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
