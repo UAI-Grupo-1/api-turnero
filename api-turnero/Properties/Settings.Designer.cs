@@ -26,7 +26,7 @@ namespace api_turnero.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SOLVM;Initial Catalog=api_db_turnero;Integrated Security=True;Trust S" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NO-PROBLEM\\SQLEXPRESS=api_db_turnero;Integrated Security=True;Trust S" +
             "erver Certificate=True")]
         public string dbApiTurnero {
             get {
