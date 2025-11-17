@@ -27,5 +27,20 @@ namespace BLL
             return pacienteDAL.ObtenerPorNombre(nombre);
         }
 
+        public Paciente ObtenerPorId(int id)
+        {
+            return pacienteDAL.ObtenerPorId(id);
+        }
+
+        public int ActualizarPaciente(Paciente paciente)
+        {
+            return pacienteDAL.Actualizar(paciente);
+        }
+
+        public int EliminarPaciente(int id)
+        {
+            return pacienteDAL.Eliminar(id);
+        }
+
     }
 }
